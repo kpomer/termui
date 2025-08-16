@@ -2,6 +2,7 @@
 // Use of this source code is governed by a MIT license that can
 // be found in the LICENSE file.
 
+//go:build ignore
 // +build ignore
 
 package main
@@ -60,7 +61,20 @@ func main() {
 		} else {
 			img.Title = fmt.Sprintf("InverseMonochrome(%d) %d/%d", img.MonochromeThreshold, index+1, len(images))
 		}
-		ui.Render(img)
+
+		k := widgets.NewParagraph()
+		k.Title = "Key Input"
+		k.Text = "Press [q](fg:red) to QUIT THE DEMO\n" +
+				"Press [ENTER](fg:red) to toggle color/monochrome\n" +
+				"Press [UP/k](fg:red) to increase monochrome level\n" +
+				"Press [DOWN/j](fg:red) to decrease monochrome level\n" +
+				"Press [TAB](fg:red) to toggle inverting monochrome\n" +
+				"Press [RIGHT/l](fg:red) to increase index\n" +
+				"Press [LEFT/h](fg:red) to decrease index"
+		k.SetRect(105, 0, 155, 15)
+		k.BorderStyle.Fg = ui.ColorWhite
+
+		ui.Render(img, k)
 	}
 	render()
 
