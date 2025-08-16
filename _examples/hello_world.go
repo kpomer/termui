@@ -1,3 +1,4 @@
+//go:build ignore
 // +build ignore
 
 package main
@@ -16,8 +17,8 @@ func main() {
 	defer ui.Close()
 
 	p := widgets.NewParagraph()
-	p.Text = "Hello World!"
-	p.SetRect(0, 0, 25, 5)
+	p.Text = "Hello World!\n\n\nPress [any key](fg:red) to QUIT THE DEMO"
+	p.SetRect(0, 0, 32, 8)
 
 	ui.Render(p)
 
