@@ -2,6 +2,7 @@
 // Use of this source code is governed by a MIT license that can
 // be found in the LICENSE file.
 
+//go:build ignore
 // +build ignore
 
 package main
@@ -59,7 +60,13 @@ func main() {
 	g4.BarColor = ui.ColorGreen
 	g4.LabelStyle = ui.NewStyle(ui.ColorYellow)
 
-	ui.Render(g0, g1, g2, g3, g4)
+	k := widgets.NewParagraph()
+	k.Title = "Key Input"
+	k.Text = "Press [q](fg:red) to QUIT THE DEMO"
+	k.SetRect(60, 0, 80, 5)
+	k.BorderStyle.Bg = ui.ColorRed
+
+	ui.Render(g0, g1, g2, g3, g4, k)
 
 	uiEvents := ui.PollEvents()
 	for {
